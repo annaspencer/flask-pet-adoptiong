@@ -1,6 +1,6 @@
 """Seed file to make test pets"""
 
-from models import Pet db
+from model import Pet, db
 from app import app
 
 #create all tables
@@ -13,10 +13,10 @@ Pet.query.delete()
 
 #add users
 
-bp = Pet(name="BP", species="Cat", image_url="https://unsplash.com/photos/B4GLLQVIdLQ", available=True)
-buddy = Pet(name="Buddy", species="Cat", image_url="https://unsplash.com/photos/B4GLLQVIdLQ", available=True)
-sparky = Pet(name="Sparky", species="Dog", image_url="https://unsplash.com/photos/B4GLLQVIdLQ", available=True)
-rainbow= Pet(name="Rainbow", species="Fish", image_url="https://unsplash.com/photos/B4GLLQVIdLQ", available=True)
+bp = Pet(name="BP", species="Cat", image_url="http://placekitten.com/200", available=True)
+buddy = Pet(name="Buddy", species="Cat", image_url="https://placekitten.com/200", available=True)
+sparky = Pet(name="Sparky", species="Dog", image_url="https://placedog.net/200", available=True)
+rainbow= Pet(name="Rainbow", species="Fish", image_url="https://picsum.photos/200", available=True)
 
 
 #add to db

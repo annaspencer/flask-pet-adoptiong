@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from flask_debugtoolbar import DebugToolbarExtension
-from model import db, connect_db
+from model import db, connect_db, Pet
+from forms import PetForm
 
 
 app = Flask(__name__)
@@ -16,4 +17,10 @@ connect_db(app)
 
 @app.route('/')
 def home():
-     return render_template('/base.html')
+     pet = Pet.query.all()
+     return render_template('/index.html', pet=pet)
+
+@app.route('/form/new')
+def add_pet():
+    form = PetForm()
+    return render_template("pet-form.html", form=form)

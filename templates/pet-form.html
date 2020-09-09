@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<div class="mx-auto" style="width: 400px;">
+<p class="text-center">
+<h1>Adopt a Pet!</h1>
+</p>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+ 
+    <h1>Pet Form</h1>
+    <form action="">
+        {% for field in form
+            if field.widget.input_type != 'hidden' %}
+        <p>
+            {{field.label}}
+            {{field}}
+
+        </p>
+        {% endfor %}
+        </form>
+
+</div>
+    
+
+{% endblock %}
