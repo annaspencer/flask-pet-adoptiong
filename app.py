@@ -17,11 +17,13 @@ connect_db(app)
 
 @app.route('/')
 def home():
+    """Home page for all pets table"""
      pet = Pet.query.all()
      return render_template('/index.html', pet=pet)
 
 @app.route('/form/new', methods=["GET","POST"])
 def add_pet():
+    """routes for add a pet form"""
     form = PetForm()
     if form.validate_on_submit():
         name = form.name.data
@@ -41,6 +43,7 @@ def add_pet():
 
 @app.route("/<int:id>/edit", methods=['GET', 'POST'])
 def edit_pet(id):
+    """routes for pet details and edit page"""
     pet = Pet.query.get_or_404(id)
 
     form = PetForm(obj=pet)

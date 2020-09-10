@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block content %}
-
+<!-- Table of all pets in db -->
 <div class="container">
     <table class="table table-dark">
         <thead>
@@ -23,13 +23,16 @@
         <tbody>
             {% for pet in pet %}
           <tr>
-            
+            <!-- link to specific pet's details/edit page -->
             <td><a href="/{{pet.id}}/edit">{{pet.name}}</a></td>
             <td>{{pet.species}}</td>
+            <!-- link to specific pet's details/edit page -->
             <td><a href="/{{pet.id}}/edit"><img src="{{pet.image_url}}"></a></td>
-           <td> {{ "available" if pet.available else "unavailable" }} </td>
+            <td> {{ "available" if pet.available else "unavailable" }} </td>
           </tr>
+          </tbody>
           {% endfor %}
+          <!-- Button to add pet form -->
           <a href="/form/new"><button type="button" class="btn btn-primary"> Add a Pet </button></a>
     
 
