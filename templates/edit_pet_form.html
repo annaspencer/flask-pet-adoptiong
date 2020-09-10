@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<div class="mx-auto" style="width: 400px;">
+<p class="text-center">
+<h1>Adopt a Pet!</h1>
+</p>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+ 
+    <h1>Pet Info</h1>
+    <h1>{{ pet.name }}</h1>
+
+
+<table class="table table-dark">
+<tbody>
+  <tr>
+    
+    <td><a href="/{{pet.id}}/edit">{{pet.name}}</a></td>
+    <td>{{pet.species}}</td>
+    <td><img src="{{pet.image_url}}"></td>
+    <td>{% if pet.notes %} {{pet.notes}}{% endif %} </td>
+   <td> {{ "available" if pet.available else "unavailable" }} </td>
+  </tr>
+</tbody>
+</table>
+    <form  method="POST">
+        {{form.hidden_tag()}}
+        {% for field in form if field.widget.input_type != 'hidden' %}
+        <p>
+            {{field.label}}
+            {{field}}
+            {% if field.errors %}
+            {% for err in field.errors %}
+            {{err}}
+            {% endfor %}
+            {% endif %}
+
+        </p>
+        {% endfor %}
+        <button>Save</button>
+        </form>
+
+</div>
+    
+
+{% endblock %}

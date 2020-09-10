@@ -39,4 +39,22 @@ def add_pet():
     else:
         return render_template("pet-form.html", form=form)
 
+@app.route("/<int:id>/edit", methods=['GET', 'POST'])
+def edit_pet(id):
+    pet = Pet.query.get_or_404(id)
+
+    form = PetForm(obj=pet)
+
+    if form.validate_on_submit():
+        pet.name = form.name.data
+        pet.species = form.species.data
+        pet.image_url = form.image_url.data
+        pet.age = form.age.data
+        pet.notes = form.notes.data
+        db.session.commit()
+        return redirect('/')
+    else:
+        return render_template("edit_pet_form.html", form=form, pet=pet)
+
+
 

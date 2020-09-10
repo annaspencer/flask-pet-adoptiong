@@ -24,7 +24,7 @@
             {% for pet in pet %}
           <tr>
             
-            <td>{{pet.name}}</td>
+            <td><a href="/{{pet.id}}/edit">{{pet.name}}</a></td>
             <td>{{pet.species}}</td>
             <td><img src="{{pet.image_url}}"></td>
            <td> {{ "available" if pet.available else "unavailable" }} </td>
