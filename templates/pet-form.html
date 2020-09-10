@@ -13,15 +13,21 @@
 <div class="container">
  
     <h1>Pet Form</h1>
-    <form action="">
-        {% for field in form
-            if field.widget.input_type != 'hidden' %}
+    <form  method="POST">
+        {{form.hidden_tag()}}
+        {% for field in form if field.widget.input_type != 'hidden' %}
         <p>
             {{field.label}}
             {{field}}
+            {% if field.errors %}
+            {% for err in field.errors %}
+            {{err}}
+            {% endfor %}
+            {% endif %}
 
         </p>
         {% endfor %}
+        <button>Add Pet</button>
         </form>
 
 </div>
